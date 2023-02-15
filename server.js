@@ -17,14 +17,7 @@ app.get('/', (req, res) => {
 })
 
 const connect = async () => {
-  try {
-    await mongoose.connect(
-      process.env.MONGO_URI,
-      console.log('connected to databse')
-    )
-  } catch (error) {
-    console.log(error)
-  }
+  mongoose.connect(process.env.MONGO_URI, console.log('connected to databse'))
 
   // try {
   //   await mongoose.connect(
@@ -41,13 +34,22 @@ const connect = async () => {
 //   console.log('mongoDB disconnected')
 // })
 
+const start = async () => {
+  try {
+    await connect()
+    app.listen(port, console.log('server is listening on port ' + port + '...'))
+  } catch (error) {}
+}
+
 const port = process.env.PORT || 9000
 
-app.listen(port, async () => {
-  try {
-    connect()
-    console.log('server is listening on port ' + port + '...')
-  } catch (error) {
-    console.log(error)
-  }
-})
+// app.listen(port, async () => {
+//   try {
+//     connect()
+//     console.log('server is listening on port ' + port + '...')
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
+
+start()
