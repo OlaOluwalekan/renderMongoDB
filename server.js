@@ -17,7 +17,14 @@ app.get('/', (req, res) => {
 })
 
 const connect = async () => {
-  mongoose.connect(process.env.MONGO_URI, console.log('connected to databse'))
+  try {
+    await mongoose.connect(
+      process.env.MONGO_URI,
+      console.log('connected to databse')
+    )
+  } catch (error) {
+    console.log(error)
+  }
 
   // try {
   //   await mongoose.connect(
