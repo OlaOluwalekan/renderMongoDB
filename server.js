@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
 })
 
 const connect = async () => {
+  // mongoose.connect(process.env.MONGO_URI, console.log('connected to databse'))
+
   try {
     await mongoose.connect(
       process.env.MONGO_URI,
@@ -28,9 +30,9 @@ const connect = async () => {
   }
 }
 
-mongoose.connection.on('disconnected', () => {
-  console.log('mongoDB disconnected')
-})
+// mongoose.connection.on('disconnected', () => {
+//   console.log('mongoDB disconnected')
+// })
 
 const port = process.env.PORT || 9000
 
