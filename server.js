@@ -15,7 +15,11 @@ app.get('/', (req, res) => {
 })
 
 const connect = () => {
-  mongoose.connect(process.env.MONGO_URI, console.log('connected to databse'))
+  try {
+    mongoose.connect(process.env.MONGO_URI, console.log('connected to databse'))
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const port = process.env.PORT || 9000
