@@ -17,17 +17,17 @@ app.get('/', (req, res) => {
 })
 
 const connect = async () => {
-  // mongoose.connect(process.env.MONGO_URI, console.log('connected to databse'))
+  mongoose.connect(process.env.MONGO_URI, console.log('connected to databse'))
 
-  try {
-    await mongoose.connect(
-      process.env.MONGO_URI,
-      console.log('connected to databse')
-    )
-  } catch (error) {
-    console.log(error)
-    process.exit(1)
-  }
+  // try {
+  //   await mongoose.connect(
+  //     process.env.MONGO_URI,
+  //     console.log('connected to databse')
+  //   )
+  // } catch (error) {
+  //   console.log(error)
+  //   process.exit(1)
+  // }
 }
 
 // mongoose.connection.on('disconnected', () => {
