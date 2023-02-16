@@ -20,9 +20,6 @@ const connect = async () => {
   mongoose.connect(process.env.MONGO_URI, console.log('connected to databse'))
 }
 
-// mongoose.connection.on('disconnected', () => {
-//   console.log('mongoDB disconnected')
-// })
 const port = process.env.PORT || 9000
 
 const start = async () => {

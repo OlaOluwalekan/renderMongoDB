@@ -18,7 +18,7 @@ const createBook = async (req, res) => {
     })
     await book.save()
 
-    res.status(200).json(book)
+    res.status(200).json({ status: 'success', message: 'book created', book })
   } catch (error) {
     res.status(500).json(error)
   }
@@ -27,11 +27,10 @@ const createBook = async (req, res) => {
 const getAllBooks = async (req, res) => {
   try {
     const books = await Book.find({})
-    res.status(200).json(books)
+    res.status(200).json({ status: 'success', message: 'book fetched', books })
   } catch (error) {
     res.status(500).json(error)
   }
-  // res.status(200).json({ status: 'success', data: 'have it' })
 }
 
 module.exports = { createBook, getAllBooks }
